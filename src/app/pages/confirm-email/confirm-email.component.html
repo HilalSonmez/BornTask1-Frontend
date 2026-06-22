@@ -1,0 +1,19 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2>E-Mail Doğrulama</h2>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>E-mail</mat-label>
+      <input matInput [(ngModel)]="email" placeholder="E-mail">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Doğrulama Kodu</mat-label>
+      <input matInput [(ngModel)]="code" placeholder="Doğrulama Kodu">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"class="custom-button" (click)="confirmEmail()">
+      Doğrula
+    </button>
+  </mat-card>
+</div>

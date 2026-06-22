@@ -1,0 +1,37 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2>Form Kayıt</h2>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Metin Giriniz</mat-label>
+      <input matInput [(ngModel)]="text1" placeholder="Max. 100 Karakter">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Sayı Giriniz (50-100)</mat-label>
+      <input matInput [(ngModel)]="num1" type="number" placeholder="50 - 100">
+    </mat-form-field>
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>Tarih Seçiniz</mat-label>
+
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [(ngModel)]="date1"
+    placeholder="Bugünden Sonraki Günleri Seçebilirsiniz">
+
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+    <button mat-raised-button class="custom-button" (click)="saveForm()">
+      Kaydet
+    </button>
+
+    <br><br>
+
+    <button mat-raised-button class="custom-button" (click)="logout()">
+      Çıkış Yap
+    </button>
+  </mat-card>
+</div>

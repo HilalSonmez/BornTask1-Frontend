@@ -1,0 +1,23 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2>Giriş Yap</h2>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>E-mail</mat-label>
+      <input matInput [(ngModel)]="email" placeholder="E-mail">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Şifre</mat-label>
+      <input matInput [(ngModel)]="password" type="password" placeholder="Şifre">
+    </mat-form-field>
+
+    <button mat-raised-button class="custom-button" (click)="login()">
+      Giriş Yap
+    </button>
+
+    <p class="forgot-link" (click)="goToForgotPassword()">
+      Şifremi Unuttum?
+    </p>
+  </mat-card>
+</div>
