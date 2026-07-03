@@ -7,6 +7,8 @@ import { FormComponent } from './pages/form/form.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { authGuard } from './guards/auth.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MyRecordsComponent } from './pages/my-records/my-records.component';
 
 export const routes: Routes = [
      {
@@ -45,4 +47,15 @@ export const routes: Routes = [
   component: ResetPasswordComponent
 },
 
+{
+  path: 'dashboard',
+  component: DashboardComponent,
+  canActivate: [authGuard]
+},
+
+{
+  path: 'my-records',
+  component: MyRecordsComponent,
+  canActivate: [authGuard]
+},
 ];

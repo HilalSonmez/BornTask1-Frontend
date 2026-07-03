@@ -8,13 +8,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { Router,RouterLink} from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatDatepickerModule,
-  MatNativeDateModule],  
+  MatNativeDateModule,RouterLink],  
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
 })
@@ -53,7 +54,7 @@ export class FormComponent {
     };
 
     this.http
-      .post('https://localhost:7183/api/Form/save-form', formData, {
+      .post(`${environment.apiUrl}/Form/save-form`, formData, {
         headers: headers,
       })
       .subscribe({

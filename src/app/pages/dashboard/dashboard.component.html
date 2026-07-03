@@ -1,0 +1,31 @@
+<mat-card>
+<h2>Yönetim Paneline Hoş Geldiniz</h2>
+<p>Lütfen Yapmak İstediğiniz İşlemi Seçiniz </p>
+<br>
+<div class="button-container">
+<button
+  mat-raised-button
+  class="dashboard-button custom-button"
+  routerLink="/form">
+  Yeni Form Ekle
+</button>
+
+
+<button
+  mat-raised-button
+  class="dashboard-button custom-button"
+  routerLink="/my-records">
+  Kayıtlarım
+</button>
+
+
+
+<button mat-raised-button 
+class="dashboard-button"
+color="warn"
+(click)="logout()">
+  Çıkış Yap
+</button>
+</div>
+</mat-card>
+

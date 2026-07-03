@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -39,7 +40,7 @@ resetPassword() {
   };
 
   this.http.post(
-    'https://localhost:7183/api/Auth/reset-password',
+   `${environment.apiUrl}/Auth/reset-password`,
     resetData
   ).subscribe({
     next: (response: any) => {

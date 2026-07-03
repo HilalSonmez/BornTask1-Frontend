@@ -1,0 +1,17 @@
+mat-card{
+  width: 550px;/*Kartın genişliği*/
+  margin: 30px auto;/*üstten 80 boşluk sağ ve solu otomatık hesapla kartı yatayda ortalar*/
+  padding: 50px; /*Kartın kenarıyla içindeki yazılar arasında bosluk bırakır*/
+  text-align: center;/*Kart içindekı yazıları ortalama*/
+  border-radius: 12px;/*Kartın köşelerini hafif yuvarlar*/
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-button {
+  width: 50%;
+  margin-top: 20px;
+}

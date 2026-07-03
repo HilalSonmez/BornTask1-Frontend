@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     const token = localStorage.getItem("token");
 
     if (token) {
-      this.router.navigate(['/form']);
+      this.router.navigate(['/dashboard']);
     }
 
   }

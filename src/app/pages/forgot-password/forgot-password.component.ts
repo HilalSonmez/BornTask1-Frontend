@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -34,7 +35,7 @@ sendResetCode() {
   };
 
   this.http.post(
-    'https://localhost:7183/api/Auth/forgot-password',
+    `${environment.apiUrl}/Auth/forgot-password`,
     forgotData
   ).subscribe({
     next: (response: any) => {

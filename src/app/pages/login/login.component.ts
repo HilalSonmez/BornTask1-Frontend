@@ -6,12 +6,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Router,RouterLink} from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule], //kullanmak istediğim şeyleri buraya ekliyorum
+  imports: [FormsModule,MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule,RouterLink], //kullanmak istediğim şeyleri buraya ekliyorum
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -33,7 +34,7 @@ export class LoginComponent {
     };
 
     this.http
-      .post('https://localhost:7183/api/Auth/login', loginData) //Backende post isteği at
+      .post(`${environment.apiUrl}/Auth/login`, loginData) //Backende post isteği at
       .subscribe({
         //backendden cevap gelınce çalıs
         next: (response: any) => {
@@ -44,7 +45,7 @@ export class LoginComponent {
             horizontalPosition: 'center',
           });
 
-          this.router.navigate(['/form']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           //hata gelırse

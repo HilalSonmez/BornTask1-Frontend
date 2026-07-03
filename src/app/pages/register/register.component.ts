@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Router } from '@angular/router';
+import { Router,RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -17,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
@@ -38,7 +39,7 @@ export class RegisterComponent {
     };
 
     this.http
-      .post('https://localhost:7183/api/Auth/register', registerData)
+      .post(`${environment.apiUrl}/Auth/register`, registerData)
       .subscribe({
         next: (response: any) => {
           console.log(response);
