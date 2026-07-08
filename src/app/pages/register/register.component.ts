@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Router,RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../environments/environment';
+import { RegisterResponse } from '../../models/register.model';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -39,9 +40,9 @@ export class RegisterComponent {
     };
 
     this.http
-      .post(`${environment.apiUrl}/Auth/register`, registerData)
+      .post<RegisterResponse>(`${environment.apiUrl}/Auth/register`, registerData)
       .subscribe({
-        next: (response: any) => {
+        next: (response) => {
           console.log(response);
 
           this.snackBar.open(response.message, 'Kapat', {

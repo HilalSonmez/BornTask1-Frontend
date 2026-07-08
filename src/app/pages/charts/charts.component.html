@@ -1,0 +1,61 @@
+<mat-card class="charts-card">
+
+  <div class="charts-header">
+
+    <button
+      mat-raised-button
+      class="custom-button"
+      routerLink="/dashboard">
+       <mat-icon>arrow_back</mat-icon>
+  Panele Dön
+    </button>
+
+    <h2>Grafiklerim</h2>
+
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="logout()">
+       <mat-icon>logout</mat-icon>
+      Çıkış Yap
+    </button>
+  </div>  
+
+  <mat-tab-group>
+
+    <mat-tab>
+
+  <ng-template mat-tab-label>
+    <mat-icon>bar_chart</mat-icon>
+    Bar Chart
+  </ng-template>
+
+  <div echarts [options]="barChartOptions" class="chart"></div>
+
+</mat-tab>
+
+   <mat-tab>
+
+  <ng-template mat-tab-label>
+    <mat-icon>show_chart</mat-icon>
+    Line Chart
+  </ng-template>
+
+ <div echarts [options]="lineChartOptions" class="chart"></div>
+
+</mat-tab>
+
+<mat-tab>
+
+  <ng-template mat-tab-label>
+    <mat-icon>pie_chart</mat-icon>
+    Pie Chart
+  </ng-template>
+
+  <div echarts [options]="pieChartOptions" class="chart"></div>
+
+</mat-tab>
+
+  </mat-tab-group>
+
+</mat-card>

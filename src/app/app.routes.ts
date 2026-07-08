@@ -9,7 +9,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { authGuard } from './guards/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MyRecordsComponent } from './pages/my-records/my-records.component';
-
+import {ChartsComponent}from'./pages/charts/charts.component';
 export const routes: Routes = [
      {
     path: '', //anasayfa
@@ -58,4 +58,9 @@ export const routes: Routes = [
   component: MyRecordsComponent,
   canActivate: [authGuard]
 },
+{
+  path: 'charts',
+  component: ChartsComponent,
+  canActivate: [authGuard]
+}
 ];

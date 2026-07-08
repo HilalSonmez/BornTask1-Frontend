@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Router,RouterLink} from '@angular/router';
 import { environment } from '../../../environments/environment';
-
+import { LoginResponse } from '../../models/login.model';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -34,10 +34,10 @@ export class LoginComponent {
     };
 
     this.http
-      .post(`${environment.apiUrl}/Auth/login`, loginData) //Backende post isteği at
+      .post<LoginResponse>(`${environment.apiUrl}/Auth/login`, loginData) //Backende post isteği at
       .subscribe({
         //backendden cevap gelınce çalıs
-        next: (response: any) => {
+        next: (response) => {
           localStorage.setItem('token', response.token); //gelen tokenı kaydet bunu aynı cıhazdan 24 saat ıcınde logın ıstememe işi için yaptık
           this.snackBar.open(response.message, 'Kapat', {
             duration: 3000,

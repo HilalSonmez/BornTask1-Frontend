@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { ResetPasswordResponse } from '../../models/reset-password.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -39,11 +40,11 @@ resetPassword() {
     newPassword: this.newPassword
   };
 
-  this.http.post(
+  this.http.post<ResetPasswordResponse>(
    `${environment.apiUrl}/Auth/reset-password`,
     resetData
   ).subscribe({
-    next: (response: any) => {
+    next: (response) => {
 
       this.snackBar.open(response.message, "Kapat", {
         duration: 3000,

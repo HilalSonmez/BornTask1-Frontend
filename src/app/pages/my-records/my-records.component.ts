@@ -6,11 +6,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { MyRecord } from '../../models/my-record.model'; //modeli burda kullanmak ıstıyorum
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-my-records',
   standalone: true,
-  imports: [CommonModule,MatCardModule, MatButtonModule, RouterLink, MatTableModule],
+  imports: [CommonModule,MatCardModule, MatButtonModule, RouterLink, MatTableModule,MatIconModule],
   templateUrl: './my-records.component.html',
   styleUrl: './my-records.component.css'
 })
@@ -26,19 +28,21 @@ logout() {
 ngOnInit(): void {
     this.getMyRecords();
 }
-records: any[] = []; //backendden gelen verılerı kyacak yer lazım record adında bos bır lıste olsun
-                     // any içine her tip veri gelebilir anlamında
+records: MyRecord[]=[]  //tip güvenliği için gelen verı ıcın ınterface yazdık onu burda kullandık                              
+
+//any[] = []; //backendden gelen verılerı kyacak yer lazım record adında bos bır lıste olsun
+                                                                       // any içine her tip veri gelebilir anlamında
 getMyRecords() {
   const token = localStorage.getItem('token'); //login olurken kaydettıgımız tokenı al
 
-  this.http.get(`${environment.apiUrl}/Form/my-records`, {
+  this.http.get<MyRecord[]>(`${environment.apiUrl}/Form/my-records`, {
     headers: {
       Authorization: `Bearer ${token}` //backende gırıs yaptım tokenım bu dıye goster
     }
   })
   
   .subscribe({
-    next: (response:any) => {
+    next: (response) => { // myrecordu gelen ıstekte tanımladıgımız için dönecek tip bellı anyı kaldırdık dırek response donduk
      this.records=response;
     },
     error: (error) => {

@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { ForgotPasswordResponse } from '../../models/forgot-password.model';
 
 @Component({
   selector: 'app-forgot-password',
@@ -34,11 +35,11 @@ sendResetCode() {
     email: this.email
   };
 
-  this.http.post(
+  this.http.post<ForgotPasswordResponse>(
     `${environment.apiUrl}/Auth/forgot-password`,
     forgotData
   ).subscribe({
-    next: (response: any) => {
+    next: (response) => {
       this.snackBar.open(response.message, "Kapat", {
         duration: 3000,
         verticalPosition: 'top',

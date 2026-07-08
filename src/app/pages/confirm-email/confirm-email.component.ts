@@ -8,6 +8,9 @@ import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../environments/environment';
+import { ConfirmEmailResponse} from '../../models/confirm-email.model';
+
+
 @Component({ //birazdan gelecek sınıf typescrıpt degıl anguların kullanıllacagı bir component
   selector: 'app-confirm-email', //bu sınıf html de hangı etıketı kullanacak
   standalone: true,//eskiden angularda her component bır module içine yazılırdı artık component kendı basına calısabılıyor
@@ -31,7 +34,7 @@ export class ConfirmEmailComponent { // yukarıdakı componentler bu sınıfa ai
   ) {}
 
   confirmEmail() { //kullanıcı butona bastıgında bu metot calısacak
-    const confirmData = {//API'ye gönderilecek veriyi tutan bir nesne oluşturmak için kullanıldı. 
+    const confirmData= {//API'ye gönderilecek veriyi tutan bir nesne oluşturmak için kullanıldı. 
       //const seçilmesinin nedeni, bu değişkenin daha sonra başka bir nesneye atanmasının istenmemesidir.
       // Bu sayede kod daha güvenli ve okunabilir olur.
 
@@ -40,9 +43,9 @@ export class ConfirmEmailComponent { // yukarıdakı componentler bu sınıfa ai
     };
 
     this.http //Bu adrese POST isteği gönder."
-      .post(`${environment.apiUrl}/Auth/confirm-email`, confirmData) //burdakı confırmdata gonderılecek olan verı swaggerdan gelen verı gıbı
+      .post<ConfirmEmailResponse>(`${environment.apiUrl}/Auth/confirm-email`, confirmData) //burdakı confırmdata gonderılecek olan verı swaggerdan gelen verı gıbı
       .subscribe({  //http yegönderdıgım istekten vrı gelınce baana haber ver
-        next: (response: any) => { //eğer istek başarılı olursa burayı calıstır response: any backendden glen cevap
+        next: (response) => { //eğer istek başarılı olursa burayı calıstır response: any backendden glen cevap
           console.log(response);
 
           this.snackBar.open(response.message, 'Kapat', { //this.snackBar.open küçük bildirim aç  **response.message backendden gelen mesaj 'Kapat' buton yazısı

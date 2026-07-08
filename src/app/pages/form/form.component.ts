@@ -10,12 +10,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Router,RouterLink} from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { FormResponse } from '../../models/form.model';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, MatDatepickerModule,
-  MatNativeDateModule,RouterLink],  
+  MatNativeDateModule,RouterLink,MatIconModule],  
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
 })
@@ -54,11 +56,11 @@ export class FormComponent {
     };
 
     this.http
-      .post(`${environment.apiUrl}/Form/save-form`, formData, {
+      .post<FormResponse>(`${environment.apiUrl}/Form/save-form`, formData, {
         headers: headers,
       })
       .subscribe({
-        next: (response: any) => {
+        next: (response) => {
   this.snackBar.open(response.message, "Kapat", {
     duration: 3000,
     verticalPosition: 'top',

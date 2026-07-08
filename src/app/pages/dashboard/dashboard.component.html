@@ -18,12 +18,18 @@
   Kayıtlarım
 </button>
 
-
+<button
+  mat-raised-button
+  class="dashboard-button custom-button"
+  routerLink="/charts">
+  Grafiklerim
+</button>
 
 <button mat-raised-button 
 class="dashboard-button"
 color="warn"
 (click)="logout()">
+<mat-icon>logout</mat-icon>
   Çıkış Yap
 </button>
 </div>
